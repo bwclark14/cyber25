@@ -1,186 +1,123 @@
-/* General styling */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a2e, #162447);
-    color: #ffffff;
-    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-    font-size: 3em;
-    margin-top: 50px;
-    color: #e94560;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: #333;
+    margin-top: 20px;
 }
 
-/* Navigation buttons */
 nav {
+    margin: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    gap: 20px;
 }
 
 nav button {
-    margin: 0 10px;
-    padding: 15px 25px;
-    background-color: #00bfff;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 1.1em;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
 }
 
 nav button:hover {
-    background-color: #0099cc;
-    transform: scale(1.05);
+    background-color: #0056b3;
 }
 
-/* Section container styling */
 .section {
     display: none;
-    background-color: #111;
-    padding: 30px;
+}
+
+#puzzle-section, #hacking-section, #metadata-section, #quiz-section {
+    display: block;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.image-card {
+    background: white;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    margin-bottom: 20px;
-    transition: opacity 0.5s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.comment {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #008cba;
-    border-radius: 5px;
-    color: #ffffff;
+    background-color: #007bff;
+    color: white;
     border: none;
-    font-size: 1em;
+    padding: 10px;
+    margin-top: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #005f72;
-    transform: scale(1.05);
+    background-color: #0056b3;
 }
 
-/* Quiz Styling */
-#quiz-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-}
-
-#quiz-container button {
-    background-color: #00bfff;
-    margin: 10px 0;
-}
-
-/* Cyber Puzzle */
-#cipher-container {
-    text-align: center;
-    font-size: 1.2em;
-}
-
-/* Additional Puzzle Styles */
-#atbash-cipher-text, #caesar-cipher-text {
-    font-size: 1.3em;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-#atbash-feedback, #caesar-feedback {
-    font-size: 1.2em;
-    color: #00bfff;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Hacking simulation */
-.hacking-challenge {
-    background: #222;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-}
-
-.hacking-challenge h3 {
-    color: #e94560;
-    margin-bottom: 15px;
-    font-size: 1.4em;
-}
-
-.hacking-output {
-    font-weight: bold;
-    color: #ff0066;
-    font-size: 1.1em;
-}
-
-/* Social Engineering Clues */
-#social-engineering-info {
-    background-color: #1f1f1f;
-    border-left: 5px solid #ff6f61;
-    padding: 15px;
-    margin-top: 20px;
-    font-style: italic;
-    font-size: 1.1em;
-    color: #f1f1f1;
-}
-
-#social-engineering-info p {
-    margin: 5px 0;
-}
-
-#social-engineering-info strong {
-    color: #ffd700;
-}
-
-/* Input fields styling */
-input[type="text"] {
-    background-color: #333;
-    border: 2px solid #555;
-    color: #fff;
+.metadata {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: left;
+    background: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
-    width: 80%;
-    max-width: 350px;
-    margin: 10px auto;
-    font-size: 1.1em;
+    display: none;
 }
 
-input[type="text"]:focus {
-    border-color: #00bfff;
-    outline: none;
+.metadata a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-/* Adding smooth transitions and hover effects to input elements */
-input[type="text"]:hover {
-    border-color: #00bfff;
-    transition: border-color 0.3s ease;
+.metadata a:hover {
+    text-decoration: underline;
 }
 
-button:active {
-    transform: scale(0.98);
+.quiz-container {
+    margin-top: 20px;
 }
 
-/* Final screen with quiz score */
-#quiz-score {
-    font-size: 1.5em;
-    color: #00bfff;
-    font-weight: bold;
-    text-align: center;
+.quiz-option {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
 }
 
-/* Style for glowing effect and hover interactions */
-.glowing {
-    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+.quiz-option:hover {
+    background-color: #218838;
 }
 
-.glowing:hover {
-    text-shadow: 0 0 5px #ff0066, 0 0 10px #ff0066, 0 0 20px #ff0066;
-}
