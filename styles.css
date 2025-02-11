@@ -86,6 +86,20 @@ button:hover {
     font-size: 1.2em;
 }
 
+/* Additional Puzzle Styles */
+#atbash-cipher-text, #caesar-cipher-text {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#atbash-feedback, #caesar-feedback {
+    font-size: 1.2em;
+    color: #00bfff;
+    font-weight: bold;
+    text-align: center;
+}
+
 /* Hacking simulation */
 .hacking-challenge {
     background: #222;
