@@ -65,34 +65,41 @@ function checkCipher() {
     feedback.innerText = userAnswer === decodedText ? "Correct!" : "Try again.";
 }
 
+// Caesar Cipher Puzzle
+const caesarCipherText = "Khoor Zruog!"; // "Hello World!" shifted by 3
+
+document.getElementById('caesar-cipher-text').innerText = `Cipher Text: ${caesarCipherText}`;
+
+function checkCaesarCipher() {
+    const userAnswer = document.getElementById('caesar-answer').value;
+    const feedback = document.getElementById('caesar-feedback');
+    feedback.innerText = userAnswer === "Hello World!" ? "Correct!" : "Try again.";
+}
+
+// Atbash Cipher Puzzle
+const atbashCipherText = "Zftzg R’n gsv Xlmhgsr!"; // "This is the Cipher!" in Atbash Cipher
+
+document.getElementById('atbash-cipher-text').innerText = `Cipher Text: ${atbashCipherText}`;
+
+function checkAtbashCipher() {
+    const userAnswer = document.getElementById('atbash-answer').value;
+    const feedback = document.getElementById('atbash-feedback');
+    feedback.innerText = userAnswer === "This is the Cipher!" ? "Correct!" : "Try again.";
+}
+
 // Hacking Challenges
 const hiddenPassword = "s3cr3tP@ss"; // Found in source code
 const socialPassword = "FluffySmithBlue42London"; // Derived from social engineering clues
-const commonPasswords = ["123456", "password", "123456789", "qwerty", "abc123", "password1", "111111", "123123", "12345", "iloveyou"];
-
-// Display social engineering clues
-const socialClues = `
-    <p>Welcome to the Rockstar Name Generator! Answer the following:</p>
-    <ul>
-        <li>First pet's name: Fluffy</li>
-        <li>Mother's maiden name: Smith</li>
-        <li>Favorite color: Blue</li>
-        <li>Favorite number: 42</li>
-        <li>City of birth: London</li>
-    </ul>
-    <p>Your Rockstar Name: <strong>FluffySmith</strong></p>
-    <p>Your Personality Type: <strong>Blue42London</strong></p>
-`;
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('social-engineering-info').innerHTML = socialClues;
-});
+const commonPasswords = ["123456", "password", "qwerty", "letmein", "admin"];
 
 function checkPassword(inputId, correctPassword) {
-    const input = document.getElementById(inputId).value;
-    document.getElementById(`${inputId}-output`).innerText = input === correctPassword ? "Access granted!" : "Access denied!";
+    const userPassword = document.getElementById(inputId).value;
+    const output = document.getElementById(inputId + '-output');
+    output.innerText = userPassword === correctPassword ? "Correct!" : "Try again.";
 }
 
 function checkCommonPassword() {
-    const input = document.getElementById('common-password').value;
-    document.getElementById('common-password-output').innerText = commonPasswords.includes(input) ? "Access granted!" : "Access denied!";
+    const userPassword = document.getElementById("common-password").value;
+    const output = document.getElementById("common-password-output");
+    output.innerText = commonPasswords.includes(userPassword) ? "Common password! Try again." : "Good guess!";
 }
