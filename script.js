@@ -65,9 +65,9 @@ function checkCipher() {
     feedback.innerText = userAnswer === decodedText ? "Correct!" : "Try again.";
 }
 
-// Hacking simulation
-const hiddenPassword = "s3cr3tP@ss"; // This can be found in source code
-const socialPassword = "FluffySmithBlue42London"; // Based on user input trick questions
+// Hacking Challenges
+const hiddenPassword = "s3cr3tP@ss"; // Found in source code
+const socialPassword = "FluffySmithBlue42London"; // Derived from social engineering clues
 const commonPasswords = ["123456", "password", "123456789", "qwerty", "abc123", "password1", "111111", "123123", "12345", "iloveyou"];
 
 // Display social engineering clues
@@ -87,19 +87,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('social-engineering-info').innerHTML = socialClues;
 });
 
-function simulateHacking(event) {
-    if (event.key === 'Enter') {
-        const input = document.getElementById('hacking-input').value;
-        const output = document.getElementById('hacking-output');
-        
-        if (input === hiddenPassword) {
-            output.innerText = "Access granted! You found the hidden password.";
-        } else if (input === socialPassword) {
-            output.innerText = "Access granted! You deduced the password from social engineering.";
-        } else if (commonPasswords.includes(input)) {
-            output.innerText = "Access granted! You guessed a common password.";
-        } else {
-            output.innerText = "Access denied! Try again.";
-        }
-    }
+function checkPassword(inputId, correctPassword) {
+    const input = document.getElementById(inputId).value;
+    document.getElementById(`${inputId}-output`).innerText = input === correctPassword ? "Access granted!" : "Access denied!";
+}
+
+function checkCommonPassword() {
+    const input = document.getElementById('common-password').value;
+    document.getElementById('common-password-output').innerText = commonPasswords.includes(input) ? "Access granted!" : "Access denied!";
 }
