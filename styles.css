@@ -42,12 +42,11 @@ button:hover {
 }
 
 /* Hacking simulation */
-#hacking-container {
-    text-align: center;
+.hacking-challenge {
+    margin-bottom: 20px;
 }
 
-#hacking-output {
-    margin-top: 10px;
+.hacking-output {
     font-weight: bold;
     color: red;
 }
