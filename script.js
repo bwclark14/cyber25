@@ -57,7 +57,7 @@ window.onload = loadQuestion;
 const cipherText = "Uifsf jt b tfdsfu dpef!";
 const decodedText = "There is a secret code!";
 
-document.getElementById('cipher-text').innerText = cipherText;
+document.getElementById('cipher-text').innerText = `Cipher Text: ${cipherText}`;
 
 function checkCipher() {
     const userAnswer = document.getElementById('cipher-answer').value;
@@ -104,7 +104,7 @@ function checkCommonPassword() {
     output.innerText = commonPasswords.includes(userPassword) ? "Common password! Try again." : "Good guess!";
 }
 
-// Social Engineering Clues
+// Social Engineering Clues - Directly add this to the social engineering section
 const socialClues = `
     <p>Welcome to the Rockstar Name Generator! Answer the following:</p>
     <ul>
@@ -117,6 +117,11 @@ const socialClues = `
     <p>Your Rockstar Name: <strong>FluffySmith</strong></p>
     <p>Your Personality Type: <strong>Blue42London</strong></p>
 `;
+
+// Ensure the content is updated after the page loads
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('social-engineering-info').innerHTML = socialClues;
+    const socialEngineeringSection = document.getElementById('social-engineering-info');
+    if (socialEngineeringSection) {
+        socialEngineeringSection.innerHTML = socialClues;
+    }
 });
