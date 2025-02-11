@@ -103,3 +103,20 @@ function checkCommonPassword() {
     const output = document.getElementById("common-password-output");
     output.innerText = commonPasswords.includes(userPassword) ? "Common password! Try again." : "Good guess!";
 }
+
+// Social Engineering Clues
+const socialClues = `
+    <p>Welcome to the Rockstar Name Generator! Answer the following:</p>
+    <ul>
+        <li>First pet's name: Fluffy</li>
+        <li>Mother's maiden name: Smith</li>
+        <li>Favorite color: Blue</li>
+        <li>Favorite number: 42</li>
+        <li>City of birth: London</li>
+    </ul>
+    <p>Your Rockstar Name: <strong>FluffySmith</strong></p>
+    <p>Your Personality Type: <strong>Blue42London</strong></p>
+`;
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('social-engineering-info').innerHTML = socialClues;
+});
