@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <h1>Cyber Challenge</h1>
+
+    <nav>
+        <button onclick="showSection('quiz-section')">Quiz</button>
+        <button onclick="showSection('puzzle-section')">Cyber Puzzle</button>
+        <button onclick="showSection('hacking-section')">Hacking Challenge</button>
+    </nav>
+
+    <!-- Quiz Section -->
+    <div id="quiz-section" class="section">
+        <h2>Cyber Security Quiz</h2>
+        <div id="quiz-container"></div>
+        <p id="quiz-score"></p>
+    </div>
+
+    <!-- Cyber Puzzle Section -->
+    <div id="puzzle-section" class="section">
+        <h2>Cyber Puzzle</h2>
+        <p id="cipher-text"></p>
+        <input type="text" id="cipher-answer" placeholder="Enter decoded message">
+        <button onclick="checkCipher()">Submit</button>
+        <p id="cipher-feedback"></p>
+    </div>
+
+    <!-- Hacking Challenge Section -->
+    <div id="hacking-section" class="section">
+        <h2>Hacking Simulation</h2>
+        <p>Enter the password:</p>
+        <input type="text" id="hacking-input" onkeypress="simulateHacking(event)">
+        <p id="hacking-output"></p>
+
+        <!-- Social Engineering Clues -->
+        <div id="social-engineering-info"></div>
+    </div>
+
+</body>
+</html>
