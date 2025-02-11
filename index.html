@@ -14,7 +14,7 @@
     <nav>
         <button onclick="showSection('quiz-section')">Quiz</button>
         <button onclick="showSection('puzzle-section')">Cyber Puzzle</button>
-        <button onclick="showSection('hacking-section')">Hacking Challenge</button>
+        <button onclick="showSection('hacking-section')">Hacking Challenges</button>
     </nav>
 
     <!-- Quiz Section -->
@@ -33,15 +33,34 @@
         <p id="cipher-feedback"></p>
     </div>
 
-    <!-- Hacking Challenge Section -->
+    <!-- Hacking Challenges Section -->
     <div id="hacking-section" class="section">
-        <h2>Hacking Simulation</h2>
-        <p>Enter the password:</p>
-        <input type="text" id="hacking-input" onkeypress="simulateHacking(event)">
-        <p id="hacking-output"></p>
+        <h2>Hacking Challenges</h2>
 
-        <!-- Social Engineering Clues -->
-        <div id="social-engineering-info"></div>
+        <div class="hacking-challenge">
+            <h3>Challenge 1: Source Code Password</h3>
+            <p>Find the password hidden in the source code.</p>
+            <input type="text" class="hacking-input" id="source-password">
+            <button onclick="checkPassword('source-password', 's3cr3tP@ss')">Submit</button>
+            <p class="hacking-output" id="source-password-output"></p>
+        </div>
+
+        <div class="hacking-challenge">
+            <h3>Challenge 2: Social Engineering Password</h3>
+            <div id="social-engineering-info"></div>
+            <input type="text" class="hacking-input" id="social-password">
+            <button onclick="checkPassword('social-password', 'FluffySmithBlue42London')">Submit</button>
+            <p class="hacking-output" id="social-password-output"></p>
+        </div>
+
+        <div class="hacking-challenge">
+            <h3>Challenge 3: Common Passwords</h3>
+            <p>Try guessing a common password.</p>
+            <input type="text" class="hacking-input" id="common-password">
+            <button onclick="checkCommonPassword()">Submit</button>
+            <p class="hacking-output" id="common-password-output"></p>
+        </div>
+
     </div>
 
 </body>
