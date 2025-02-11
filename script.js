@@ -5,6 +5,7 @@ function showSection(sectionId) {
     document.getElementById(sectionId).style.display = 'block';
 }
 
+/*
 // Quiz functionality with multiple choice
 const quizQuestions = [
     { 
@@ -52,6 +53,7 @@ function checkAnswer(selectedOption) {
 
 // Load the first question initially
 window.onload = loadQuestion;
+*/
 
 // Cyber puzzle
 const cipherText = "Uifsf jt b tfdsfu dpef!";
@@ -125,3 +127,137 @@ document.addEventListener("DOMContentLoaded", () => {
         socialEngineeringSection.innerHTML = socialClues;
     }
 });
+
+// Image Metadata Viewer Section
+document.addEventListener("DOMContentLoaded", function () {
+    const imageFiles = [
+        "cat.jpg", "IMG_6972.jpg", "image3.jpg", "image4.jpg",
+        "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg",
+        "image9.jpg", "image10.jpg", "image11.jpg", "image12.jpg"
+    ];
+
+    const comments = [
+        "My Cat", "Lego Street", "Mountain view", "City skyline",
+        "Autumn leaves", "Snowy forest", "Desert dunes", "Ocean waves",
+        "Countryside road", "Cherry blossoms", "Rainy night", "Northern lights"
+    ];
+
+    const container = document.querySelector(".image-container");
+
+    imageFiles.forEach((src, index) => {
+        const card = document.createElement("div");
+        card.classList.add("image-card");
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Image ${index + 1}`;
+
+        const comment = document.createElement("p");
+        comment.classList.add("comment");
+        comment.textContent = comments[index];
+
+        const button = document.createElement("button");
+        button.textContent = "View Metadata";
+
+        const metadataDiv = document.createElement("div");
+        metadataDiv.classList.add("metadata");
+        metadataDiv.style.display = "none";
+
+        // Convert Degrees, Minutes, Seconds (DMS) to Decimal Coordinates
+        function convertDMSToDecimal(dms, direction) {
+            if (!dms) return null;
+            let decimal = dms[0] + dms[1] / 60 + dms[2] / 3600;
+            return direction === "S" || direction === "W" ? -decimal : decimal;
+        }
+
+        button.addEventListener("click", function () {
+            if (metadataDiv.textContent === "") {
+                EXIF.getData(img, function () {
+                    let exifData = EXIF.getAllTags(this);
+
+                    // Extract GPS Data
+                    let latitude = convertDMSToDecimal(exifData.GPSLatitude, exifData.GPSLatitudeRef);
+                    let longitude = convertDMSToDecimal(exifData.GPSLongitude, exifData.GPSLongitudeRef);
+                    let gpsLink = latitude && longitude
+                        ? `<br><strong>📍 Location:</strong> <a href="https://www.google.com/maps?q=${latitude},${longitude}" target="_blank">View on Google Maps</a>`
+                        : "<br><strong>📍 Location:</strong> Not Available";
+
+                    // Metadata Display
+                    let metadataText = `
+                        <strong>👤 Creator:</strong> ${exifData.Artist || "Unknown"}<br>
+                        <strong>© Copyright:</strong> ${exifData.Copyright || "Unknown"}<br>
+                        <strong>📷 Camera:</strong> ${exifData.Make || "Unknown"} ${exifData.Model || ""}<br>
+                        <strong>📆 Date Taken:</strong> ${exifData.DateTimeOriginal || "Unknown"}<br>
+                        <strong>🔆 ISO:</strong> ${exifData.ISOSpeedRatings || "Unknown"}<br>
+                        <strong>⏳ Shutter Speed:</strong> ${exifData.ExposureTime ? exifData.ExposureTime + " sec" : "Unknown"}<br>
+                        <strong>🌅 Aperture:</strong> f/${exifData.FNumber || "Unknown"}<br>
+                        <strong>🔭 Focal Length:</strong> ${exifData.FocalLength ? exifData.FocalLength + "mm" : "Unknown"}<br>
+                        <strong>⚡ Flash:</strong> ${exifData.Flash ? "Yes" : "No"}<br>
+                        <strong>🎨 Software Used:</strong> ${exifData.Software || "Unknown"}<br>
+                        <strong>📏 Image Dimensions:</strong> ${exifData.ExifImageWidth || "?"} x ${exifData.ExifImageHeight || "?"} px<br>
+                        ${gpsLink}
+                    `;
+
+                    metadataDiv.innerHTML = metadataText;
+                    metadataDiv.style.display = "block";
+                });
+            } else {
+                metadataDiv.style.display = metadataDiv.style.display === "none" ? "block" : "none";
+            }
+        });
+
+        card.appendChild(img);
+        card.appendChild(comment);
+        card.appendChild(button);
+        card.appendChild(metadataDiv);
+
+        container.appendChild(card);
+    });
+});
+
+// Cyber Quiz Section Logic
+const questions = [
+    {
+        question: "What is the capital of France?",
+        options: {a: "Berlin", b: "Madrid", c: "Paris", d: "Rome"},
+        correctAnswer: "c"
+    },
+    {
+        question: "What is 2 + 2?",
+        options: {a: "3", b: "4", c: "5", d: "6"},
+        correctAnswer: "b"
+    },
+    // Add more questions as needed
+];
+
+let currentQuestion = 0;
+
+function displayQuestion() {
+    const questionData = questions[currentQuestion];
+    document.getElementById("question").textContent = questionData.question;
+    document.querySelector(".quiz-option:nth-child(1)").textContent = questionData.options.a;
+    document.querySelector(".quiz-option:nth-child(2)").textContent = questionData.options.b;
+    document.querySelector(".quiz-option:nth-child(3)").textContent = questionData.options.c;
+    document.querySelector(".quiz-option:nth-child(4)").textContent = questionData.options.d;
+    document.getElementById("quiz-result").textContent = "";
+}
+
+function checkAnswer(answer) {
+    const questionData = questions[currentQuestion];
+    if (answer === questionData.correctAnswer) {
+        document.getElementById("quiz-result").textContent = "Correct!";
+    } else {
+        document.getElementById("quiz-result").textContent = "Incorrect, try again!";
+    }
+
+    // Move to the next question
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        setTimeout(displayQuestion, 1500);  // Delay for showing next question
+    } else {
+        document.getElementById("quiz-result").textContent = "Quiz Complete!";
+    }
+}
+
+// Initialize the first question
+displayQuestion();
