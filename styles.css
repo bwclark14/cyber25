@@ -1,0 +1,62 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+.section {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Quiz styling */
+#quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cyber puzzle */
+#cipher-container {
+    text-align: center;
+}
+
+/* Hacking simulation */
+#hacking-container {
+    text-align: center;
+}
+
+#hacking-output {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+/* Social Engineering Clues */
+#social-engineering-info {
+    background-color: #ffeeba;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    margin-top: 20px;
+    font-style: italic;
+}
